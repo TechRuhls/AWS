@@ -1,0 +1,10 @@
+#!/bin/bash
+yum update -y
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+cd /var/www/html
+echo "<html><h1>Hello AWS Gurus</h1></html>"
+>index.html
+aws s3 mb s3://testymctestin1142
+aws s3 cp index.html s3://testymctestin1142
